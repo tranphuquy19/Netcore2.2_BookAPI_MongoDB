@@ -13307,7 +13307,7 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "MongoDB.Driver >= 2.8.1",
-      "NSwag.AspNetCore"
+      "NSwag.AspNetCore >= 13.0.6"
     ]
   },
   "packageFolders": {
@@ -13374,7 +13374,7 @@
           },
           "NSwag.AspNetCore": {
             "target": "Package",
-            "version": "(, )"
+            "version": "[13.0.6, )"
           }
         },
         "imports": [
