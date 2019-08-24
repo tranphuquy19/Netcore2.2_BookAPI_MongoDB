@@ -37,6 +37,7 @@ namespace Doraneko
             services.AddSingleton<BookService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +54,10 @@ namespace Doraneko
             }
 
             app.UseHttpsRedirection();
+            // >>>>>>>>>>   Add swagger
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
+            // <<<<<<<<<<   END Add swagger
             app.UseMvc();
         }
     }
