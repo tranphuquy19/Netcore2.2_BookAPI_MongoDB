@@ -22,7 +22,7 @@ namespace Doraneko.Controllers
             return _authorService.Get();
         }
 
-//https://localhost:5001/api/Authors/{:id}
+        //https://localhost:5001/api/Authors/{:id}
         [HttpGet("{id:length(24)}", Name = "GetAuthor")]
         public ActionResult<Author> GetAuthor(string id)
         {
