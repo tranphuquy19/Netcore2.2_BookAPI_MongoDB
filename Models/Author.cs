@@ -9,7 +9,9 @@ namespace Doraneko.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Name { get; set; }
-        public List<ObjectId> Books { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> Books { get; set; }
 
     }
 }

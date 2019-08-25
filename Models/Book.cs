@@ -9,7 +9,8 @@ namespace Doraneko.Models
         public string Id { get; set; }
         public decimal Price { get; set; }
         public string Category { get; set; }
-        public string Author { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string AuthorId { get; set; }
         public string Name { get; set; }
     }
 }
