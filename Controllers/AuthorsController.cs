@@ -22,7 +22,8 @@ namespace Doraneko.Controllers
             return _authorService.Get();
         }
 
-        [HttpGet("{id}")]
+//https://localhost:5001/api/Authors/{:id}
+        [HttpGet("{id:length(24)}", Name = "GetAuthor")]
         public ActionResult<Author> GetAuthor(string id)
         {
             var todoItem = _authorService.Get(id);
@@ -37,7 +38,7 @@ namespace Doraneko.Controllers
         public ActionResult<Author> Post(Author author)
         {
             _authorService.Create(author);
-            return CreatedAtAction(nameof(GetAuthor), new { id = author.Id }, author);
+            return CreatedAtRoute("GetAuthor", new { id = author.Id }, author);
         }
 
         [HttpPut("id:length(24)")]

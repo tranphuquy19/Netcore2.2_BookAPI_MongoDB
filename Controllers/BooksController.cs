@@ -24,8 +24,9 @@ namespace Doraneko.Controllers
             return _bookService.Get();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Book> GetBook(string id)
+        //https://localhost:5001/api/Books/{:id}
+        [HttpGet("{id:length(24)}", Name = "GetBook")]
+        public ActionResult<Book> Get(string id)
         {
             var todoItem = _bookService.Get(id);
             if (todoItem == null)
@@ -39,7 +40,11 @@ namespace Doraneko.Controllers
         public ActionResult<Book> Post(Book item)
         {
             _bookService.Create(item);
-            return CreatedAtAction(nameof(GetBook), new { id = item.Id }, item);
+            /*
+            nameof(GetBook): lấy hàm GetBook(string id) nay đã đổi sang Get(string id)
+            return CreatedAtRoute(nameof(GetBook), new { id = item.Id }, item);
+             */
+            return CreatedAtRoute("GetBook", new { id = item.Id }, item);
         }
 
         [HttpPut("id:length(24)")]
