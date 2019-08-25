@@ -24,7 +24,7 @@ namespace Doraneko.Controllers
 
         //https://localhost:5001/api/Authors/{:id}
         [HttpGet("{id:length(24)}", Name = "GetAuthor")]
-        public ActionResult<Author> GetAuthor(string id)
+        public ActionResult<Author> Get(string id)
         {
             var todoItem = _authorService.Get(id);
             if (todoItem == null)
