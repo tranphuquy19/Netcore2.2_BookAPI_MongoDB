@@ -10,10 +10,10 @@ namespace Doraneko.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookController : ControllerBase
+    public class BooksController : ControllerBase
     {
         private readonly BookService _bookService;
-        public BookController(BookService bookService)
+        public BooksController(BookService bookService)
         {
             _bookService = bookService;
         }
@@ -27,7 +27,7 @@ namespace Doraneko.Controllers
         [HttpGet("{id}")]
         public ActionResult<Book> GetBook(string id)
         {
-            var todoItem =  _bookService.Get(id);
+            var todoItem = _bookService.Get(id);
             if (todoItem == null)
             {
                 return NotFound();
@@ -40,6 +40,30 @@ namespace Doraneko.Controllers
         {
             _bookService.Create(item);
             return CreatedAtAction(nameof(GetBook), new { id = item.Id }, item);
+        }
+
+        [HttpPut("id:length(24)")]
+        public ActionResult<Book> Update(string id, Book bookIn)
+        {
+            var book = _bookService.Get(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            _bookService.Update(id, bookIn);
+            return NoContent();
+        }
+
+        [HttpDelete("id:length(24)")]
+        public ActionResult<Book> Delete(string id)
+        {
+            var book = _bookService.Get(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            _bookService.Remove(book.Id);
+            return NoContent();
         }
     }
 }
